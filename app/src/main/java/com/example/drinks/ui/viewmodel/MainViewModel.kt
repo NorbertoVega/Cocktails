@@ -1,23 +1,33 @@
 package com.example.drinks.ui.viewmodel
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
 import com.example.drinks.domain.Repo
 import com.example.drinks.vo.Resource
 import kotlinx.coroutines.Dispatchers
 
 class MainViewModel(private val repo: Repo): ViewModel() {
 
-    val fetchDrinkList = liveData(Dispatchers.IO) {
+    private val drinkData = MutableLiveData<String>()
 
-        emit(Resource.Loading())
+    fun setDrink(nameDrink: String) {
+        drinkData.value = nameDrink
+    }
 
-        try {
-            emit(repo.getDrinksList("margarita"))
+    init {
+        setDrink("Margarita")
+    }
 
-        } catch (e: Exception) {
+    val fetchDrinkList = drinkData.distinctUntilChanged().switchMap {
 
-            emit(Resource.Failure(e))
+        liveData(Dispatchers.IO) {
+
+            emit(Resource.Loading())
+            try {
+                emit(repo.getDrinksList(it))
+
+            } catch (e: Exception) {
+                emit(Resource.Failure(e))
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
@@ -38,6 +39,12 @@ class MainFragment : Fragment(), MainAdapter.OnDrinkListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerView()
+        setUpSearchView()
+        setUpObservers()
+
+    }
+
+    private fun setUpObservers() {
         viewModel.fetchDrinkList.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Loading ->  progress_bar.visibility = View.VISIBLE
@@ -51,7 +58,22 @@ class MainFragment : Fragment(), MainAdapter.OnDrinkListener {
                 }
             }
         })
+    }
 
+    private fun setUpSearchView() {
+
+        search_view.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                viewModel.setDrink(query!!)
+                return false
+            }
+
+            override fun onQueryTextChange(p0: String?): Boolean {
+                return false
+            }
+
+        })
     }
 
     private fun setUpRecyclerView() {
