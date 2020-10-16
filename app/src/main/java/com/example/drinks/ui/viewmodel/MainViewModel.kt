@@ -13,7 +13,7 @@ class MainViewModel(private val repo: Repo): ViewModel() {
         emit(Resource.Loading())
 
         try {
-            emit(repo.getDrinksList())
+            emit(repo.getDrinksList("margarita"))
 
         } catch (e: Exception) {
 
