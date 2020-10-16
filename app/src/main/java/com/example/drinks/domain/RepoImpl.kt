@@ -7,6 +7,6 @@ import com.example.drinks.vo.Resource
 class RepoImpl(private val dataSource: DataSource): Repo {
 
     override fun getDrinksList(): Resource<List<Drink>> {
-        return dataSource.getDrinkList()
+        return dataSource.drinkList
     }
 }

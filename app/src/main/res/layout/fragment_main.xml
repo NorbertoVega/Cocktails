@@ -7,18 +7,22 @@
     android:gravity="center"
     tools:context=".ui.MainFragment">
 
-    <TextView
+    <RelativeLayout
+        android:id="@+id/progress_bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/hello_blank_fragment"
-        android:textSize="25sp"/>
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
-    <Button
-        android:id="@+id/btn_go_to_details"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/go_to_details_button_label"/>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_drinks_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
