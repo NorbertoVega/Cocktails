@@ -1,6 +1,7 @@
 package com.example.drinks.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -50,11 +51,12 @@ class MainFragment : Fragment(), MainAdapter.OnDrinkListener {
                 is Resource.Loading ->  progress_bar.visibility = View.VISIBLE
                 is Resource.Success -> {
                     progress_bar.visibility = View.GONE
+                    Log.d("mainFrag", "${it.data}")
                     rv_drinks_list.adapter = MainAdapter(requireContext(), it.data, this)
                 }
                 is Resource.Failure -> {
                     progress_bar.visibility = View.GONE
-                    Toast.makeText(requireContext(), "An error occurred fetching data ${it.exception}", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "An error occurred fetching data: ${it.exception.message}", Toast.LENGTH_LONG).show()
                 }
             }
         })
@@ -84,6 +86,6 @@ class MainFragment : Fragment(), MainAdapter.OnDrinkListener {
     override fun onDrinkClicked(item: Drink) {
         val bundle = Bundle()
         bundle.putParcelable("drink", item)
-        findNavController().navigate(R.id.detailFragment, bundle)
+        findNavController().navigate(R.id.action_mainFragment_to_detailFragment, bundle)
     }
 }

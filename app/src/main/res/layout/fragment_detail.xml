@@ -1,17 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
     tools:context=".ui.DetailFragment">
+    
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/detail_drink_image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"/>
 
     <TextView
+        android:id="@+id/detail_title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="25sp"
-        android:text="@string/hello_detail_fragment" />
+        android:textStyle="bold"
+        tools:text="@string/tile_detail_drink"/>
 
+    <TextView
+        android:id="@+id/description_has_alcohol"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        tools:text="Non Alcoholic"/>
+
+    <TextView
+        android:id="@+id/detail_description"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"/>
+ 
 </LinearLayout>
