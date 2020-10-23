@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.drinks.AppDatabase
 import com.example.drinks.R
 import com.example.drinks.data.DataSource
 import com.example.drinks.data.model.Drink
@@ -27,7 +28,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment(), MainAdapter.OnDrinkListener {
 
-    private val viewModel by viewModels<MainViewModel> { VMFactory(RepoImpl(DataSource())) }
+    private val viewModel by viewModels<MainViewModel> { VMFactory(RepoImpl(DataSource(AppDatabase.getDatabase(requireActivity().applicationContext)))) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +43,9 @@ class MainFragment : Fragment(), MainAdapter.OnDrinkListener {
         setUpRecyclerView()
         setUpSearchView()
         setUpObservers()
+        favourites_button.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_favouriteFragment)
+        }
 
     }
 

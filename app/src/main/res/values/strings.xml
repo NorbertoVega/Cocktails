@@ -3,4 +3,5 @@
     <string name="hello_blank_fragment">Hello main fragment</string>
     <string name="tile_detail_drink">Margarita</string>
     <string name="go_to_details_button_label">Go to details</string>
+    <string name="go_to_favourites_button_label">Go to favourites</string>
 </resources>

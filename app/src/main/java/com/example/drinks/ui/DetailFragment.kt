@@ -6,12 +6,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
+import com.example.drinks.AppDatabase
 import com.example.drinks.R
+import com.example.drinks.data.DataSource
 import com.example.drinks.data.model.Drink
+import com.example.drinks.data.model.DrinkEntity
+import com.example.drinks.domain.RepoImpl
+import com.example.drinks.ui.viewmodel.MainViewModel
+import com.example.drinks.ui.viewmodel.VMFactory
 import kotlinx.android.synthetic.main.fragment_detail.*
 
 class DetailFragment : Fragment() {
+
+    private val viewModel by viewModels<MainViewModel> { VMFactory(RepoImpl(DataSource(AppDatabase.getDatabase(requireActivity().applicationContext)))) }
 
     private lateinit var drink: Drink
 
@@ -33,7 +43,14 @@ class DetailFragment : Fragment() {
         detail_title.text = drink.name
         detail_description.text = drink.description
         description_has_alcohol.text = drink.hasAlcohol
+
+        description_save_drink_btn.setOnClickListener {
+            viewModel.saveDrink(DrinkEntity(drink.drinkId, drink.image, drink.name, drink.description, drink.hasAlcohol))
+            Toast.makeText(requireContext(), "Drink saved in favourites", Toast.LENGTH_SHORT).show()
+        }
     }
+
+
 
 
 }

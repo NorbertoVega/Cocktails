@@ -7,6 +7,12 @@
     android:gravity="center"
     tools:context=".ui.MainFragment">
 
+    <Button
+        android:id="@+id/favourites_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/go_to_favourites_button_label"/>
+
     <SearchView
         android:id="@+id/search_view"
         android:layout_width="match_parent"
