@@ -43,5 +43,4 @@ class MainAdapter(private val context: Context, private val drinkList: List<Drin
         }
 
     }
-
 }
