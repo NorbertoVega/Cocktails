@@ -1,12 +1,10 @@
 package com.example.drinks.domain
 
-import com.example.drinks.AppDatabase
-import com.example.drinks.data.DataSource
 import com.example.drinks.data.model.Drink
 import com.example.drinks.data.model.DrinkEntity
 import com.example.drinks.vo.Resource
 
-class RepoImpl(private val dataSource: DataSource): Repo {
+class RepoImpl(private val dataSource: DataSourceRepo): Repo {
 
     override suspend fun getDrinksList(drinkName: String): Resource<List<Drink>> {
         return dataSource.getDrinkByName(drinkName)
