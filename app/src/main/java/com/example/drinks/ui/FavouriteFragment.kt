@@ -13,18 +13,21 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.drinks.AppDatabase
 import com.example.drinks.R
-import com.example.drinks.data.DataSource
+import com.example.drinks.data.DataSourceImpl
 import com.example.drinks.data.model.Drink
+import com.example.drinks.domain.DrinkDao
 import com.example.drinks.domain.RepoImpl
 import com.example.drinks.ui.viewmodel.MainAdapter
 import com.example.drinks.ui.viewmodel.MainViewModel
-import com.example.drinks.ui.viewmodel.VMFactory
 import com.example.drinks.vo.Resource
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_favourite.*
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class FavouriteFragment : Fragment(), MainAdapter.OnDrinkListener {
 
-    private val viewModel by viewModels<MainViewModel> { VMFactory(RepoImpl(DataSource(AppDatabase.getDatabase(requireActivity().applicationContext)))) }
+    private val viewModel by viewModels<MainViewModel>()
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -35,7 +38,6 @@ class FavouriteFragment : Fragment(), MainAdapter.OnDrinkListener {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
         setupObservers()
-
     }
 
     private fun setupObservers() {

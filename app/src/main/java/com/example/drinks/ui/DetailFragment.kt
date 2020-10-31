@@ -11,17 +11,18 @@ import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
 import com.example.drinks.AppDatabase
 import com.example.drinks.R
-import com.example.drinks.data.DataSource
+import com.example.drinks.data.DataSourceImpl
 import com.example.drinks.data.model.Drink
 import com.example.drinks.data.model.DrinkEntity
 import com.example.drinks.domain.RepoImpl
 import com.example.drinks.ui.viewmodel.MainViewModel
-import com.example.drinks.ui.viewmodel.VMFactory
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_detail.*
 
+@AndroidEntryPoint
 class DetailFragment : Fragment() {
 
-    private val viewModel by viewModels<MainViewModel> { VMFactory(RepoImpl(DataSource(AppDatabase.getDatabase(requireActivity().applicationContext)))) }
+    private val viewModel by viewModels<MainViewModel>()
 
     private lateinit var drink: Drink
 

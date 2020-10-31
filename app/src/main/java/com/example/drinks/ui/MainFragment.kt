@@ -8,27 +8,26 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.drinks.AppDatabase
 import com.example.drinks.R
-import com.example.drinks.data.DataSource
+import com.example.drinks.data.DataSourceImpl
 import com.example.drinks.data.model.Drink
 import com.example.drinks.domain.RepoImpl
 import com.example.drinks.ui.viewmodel.MainAdapter
 import com.example.drinks.ui.viewmodel.MainViewModel
-import com.example.drinks.ui.viewmodel.VMFactory
 import com.example.drinks.vo.Resource
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_main.*
 
+@AndroidEntryPoint
 class MainFragment : Fragment(), MainAdapter.OnDrinkListener {
 
-    private val viewModel by viewModels<MainViewModel> { VMFactory(RepoImpl(DataSource(AppDatabase.getDatabase(requireActivity().applicationContext)))) }
+    private val viewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

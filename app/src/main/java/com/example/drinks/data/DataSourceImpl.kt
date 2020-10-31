@@ -5,11 +5,13 @@ import com.example.drinks.AppDatabase
 import com.example.drinks.data.model.Drink
 import com.example.drinks.data.model.DrinkEntity
 import com.example.drinks.domain.DataSourceRepo
+import com.example.drinks.domain.DrinkDao
 import com.example.drinks.vo.Resource
 import com.example.drinks.vo.RetrofitClient
 import java.lang.Exception
+import javax.inject.Inject
 
-class DataSource(private val appDatabase: AppDatabase): DataSourceRepo {
+class DataSourceImpl@Inject constructor(private val drinkDao: DrinkDao): DataSourceRepo {
 
     override suspend fun getDrinkByName(drinkName: String): Resource<List<Drink>> {
         val result = RetrofitClient.webService.getDrinkByName(drinkName).drinkList
@@ -18,11 +20,11 @@ class DataSource(private val appDatabase: AppDatabase): DataSourceRepo {
     }
 
     override suspend fun insertDrinkIntoRoom(drink: DrinkEntity) {
-        appDatabase.drinkDao().insertFavourite(drink)
+        drinkDao.insertFavourite(drink)
     }
 
     override suspend fun getFavouriteDrinks(): Resource<List<DrinkEntity>>{
-        return Resource.Success(appDatabase.drinkDao().getAllFavouriteDrinks())
+        return Resource.Success(drinkDao.getAllFavouriteDrinks())
     }
 }
 
