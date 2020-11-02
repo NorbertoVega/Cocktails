@@ -1,4 +1,4 @@
-package com.example.drinks.data.model
+package com.example.drinks.domain.model
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo

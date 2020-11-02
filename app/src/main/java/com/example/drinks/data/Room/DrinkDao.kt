@@ -1,10 +1,10 @@
-package com.example.drinks.domain
+package com.example.drinks.data.Room
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.drinks.data.model.DrinkEntity
+import com.example.drinks.domain.model.DrinkEntity
 
 @Dao
 interface DrinkDao {

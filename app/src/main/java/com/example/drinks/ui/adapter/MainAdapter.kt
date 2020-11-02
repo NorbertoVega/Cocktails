@@ -1,4 +1,4 @@
-package com.example.drinks.ui.viewmodel
+package com.example.drinks.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,8 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.drinks.R
-import com.example.drinks.base.BaseViewHolder
-import com.example.drinks.data.model.Drink
+import com.example.drinks.domain.model.Drink
 import kotlinx.android.synthetic.main.drink_list_item.view.*
 
 class MainAdapter(private val context: Context, private val drinkList: List<Drink>, private val itemClickedListener: OnDrinkListener): RecyclerView.Adapter<BaseViewHolder<*>>() {

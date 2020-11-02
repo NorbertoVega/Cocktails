@@ -9,12 +9,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
-import com.example.drinks.AppDatabase
 import com.example.drinks.R
-import com.example.drinks.data.DataSourceImpl
-import com.example.drinks.data.model.Drink
-import com.example.drinks.data.model.DrinkEntity
-import com.example.drinks.domain.RepoImpl
+import com.example.drinks.domain.model.Drink
+import com.example.drinks.domain.model.DrinkEntity
 import com.example.drinks.ui.viewmodel.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_detail.*

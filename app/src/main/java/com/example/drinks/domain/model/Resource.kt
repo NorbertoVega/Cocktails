@@ -1,4 +1,4 @@
-package com.example.drinks.vo
+package com.example.drinks.domain.model
 
 
 sealed class Resource<out T> {

@@ -2,7 +2,7 @@ package com.example.drinks.di
 
 import android.content.Context
 import androidx.room.Room
-import com.example.drinks.AppDatabase
+import com.example.drinks.data.Room.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

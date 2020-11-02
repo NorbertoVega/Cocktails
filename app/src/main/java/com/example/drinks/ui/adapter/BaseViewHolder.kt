@@ -1,4 +1,4 @@
-package com.example.drinks.base
+package com.example.drinks.ui.adapter
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

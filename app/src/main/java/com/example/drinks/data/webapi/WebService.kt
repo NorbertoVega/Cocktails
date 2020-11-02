@@ -1,6 +1,6 @@
-package com.example.drinks.domain
+package com.example.drinks.data.webapi
 
-import com.example.drinks.data.model.DrinkList
+import com.example.drinks.domain.model.DrinkList
 import retrofit2.http.GET
 import retrofit2.http.Query
 
