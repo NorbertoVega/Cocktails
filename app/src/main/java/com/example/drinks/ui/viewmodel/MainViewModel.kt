@@ -17,7 +17,7 @@ class MainViewModel @ViewModelInject constructor(private val getSaveDrinks: GetS
     }
 
     init {
-        setDrink("Margarita")
+        setDrink("Gin")
     }
 
     val fetchDrinkList = drinkData.distinctUntilChanged().switchMap {

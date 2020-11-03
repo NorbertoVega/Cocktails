@@ -51,7 +51,6 @@ class MainFragment : Fragment(), MainAdapter.OnDrinkListener {
                 is Resource.Loading ->  progress_bar.visibility = View.VISIBLE
                 is Resource.Success -> {
                     progress_bar.visibility = View.GONE
-                    Log.d("mainFrag", "${it.data}")
                     rv_drinks_list.adapter = MainAdapter(requireContext(), it.data, this)
                 }
                 is Resource.Failure -> {
