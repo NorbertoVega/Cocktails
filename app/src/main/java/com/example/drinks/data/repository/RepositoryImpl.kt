@@ -9,7 +9,7 @@ import com.example.drinks.domain.model.Resource
 import java.lang.Exception
 import javax.inject.Inject
 
-class DataSourceImpl@Inject constructor(private val drinkDao: DrinkDao): Repository {
+class RepositoryImpl@Inject constructor(private val drinkDao: DrinkDao): Repository {
 
     override suspend fun getDrinkByName(drinkName: String): Resource<List<Drink>> {
         val result = RetrofitClient.webService.getDrinkByName(drinkName).drinkList

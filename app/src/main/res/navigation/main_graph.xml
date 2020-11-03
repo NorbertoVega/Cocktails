@@ -33,8 +33,8 @@
     <fragment
         android:id="@+id/favouriteFragment"
         android:name="com.example.drinks.ui.FavouriteFragment"
-        android:label="fragment_favourite"
-        tools:layout="@layout/fragment_favourite" >
+        android:label="Favourites"
+        tools:layout="@layout/fragment_favourite">
         <action
             android:id="@+id/action_favouriteFragment_to_detailFragment"
             app:destination="@id/detailFragment"

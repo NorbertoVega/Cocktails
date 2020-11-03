@@ -1,5 +1,6 @@
 package com.example.drinks.ui.viewmodel
 
+import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.*
 import com.example.drinks.domain.model.DrinkEntity
@@ -8,7 +9,7 @@ import com.example.drinks.domain.model.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MainViewModel @ViewModelInject constructor(private val getSaveDrinks: GetSaveDrinks): ViewModel() {
+class MainViewModel @ViewModelInject constructor(private val getSaveDrinks: GetSaveDrinks, @Assisted private val savedStateHandle: SavedStateHandle): ViewModel() {
 
     private val drinkData = MutableLiveData<String>()
 
